@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
 import ArticleList from '../ArticleList'
@@ -20,4 +20,4 @@ const MainView = props => (
   </div>
 )
 
-export default connect(mapStateToProps, null)(Mainview)
+export default connect(mapStateToProps, null)(MainView)

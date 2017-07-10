@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 // import { devToolsEnhancer } from 'redux-devtools-extension'
 import { logger } from 'redux-logger'
 
-import './index.css';
+import './index.css'
 import App from './components/App'
-import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from './registerServiceWorker'
 
 const defaultState = {
   appName: '留言板',
@@ -15,7 +15,12 @@ const defaultState = {
 }
 
 const rootReducer = (state = defaultState, action) => {
-  return state
+  switch (action.type) {
+    case 'HOME_PAGE_LOADED':
+      return { ...state, articles: action.payload }
+    default:
+      return state
+  }
 }
 
 export const store = createStore(rootReducer, applyMiddleware(logger))
@@ -24,15 +29,6 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root'));
-registerServiceWorker();
-
-
-
-
-
-
-
-
-
-
+  document.getElementById('root')
+)
+registerServiceWorker()
