@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+// import { devToolsEnhancer } from 'redux-devtools-extension'
+import { logger } from 'redux-logger'
 
 import './index.css';
 import App from './components/App'
@@ -16,7 +18,7 @@ const rootReducer = (state = defaultState, action) => {
   return state
 }
 
-const store = createStore(rootReducer)
+export const store = createStore(rootReducer, applyMiddleware(logger))
 
 ReactDOM.render(
   <Provider store={store}>
