@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Banner from './Banner'
 import MainView from './MainView'
 
-import Request from '../../api'
+import { articles } from '../../api'
 
 const mapStateToProps = state => ({
   appName: state.appName
@@ -16,7 +16,7 @@ const mapDisPatchToProps = dispatch => ({
 
 class Home extends Component {
   componentWillMount () {
-    this.props.onLoad(Request.getAllArticles())
+    this.props.onLoad(articles.all)
   }
 
   render () {
