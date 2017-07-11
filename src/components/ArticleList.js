@@ -1,5 +1,7 @@
 import React from 'react'
 
+import ArticlePreView from './ArticlePreView'
+
 const ArticleList = props => {
   if (!props.articles) {
     return <div className='article-preview'>加载中...</div>
@@ -9,7 +11,9 @@ const ArticleList = props => {
   }
   return (
     <div>
-      {props.articles.map(article => <h2>{article.title}</h2>)}
+      {props.articles.map(article => (
+        <ArticlePreView key={article.slug} article={article} />
+      ))}
     </div>
   )
 }

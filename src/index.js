@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 // import { devToolsEnhancer } from 'redux-devtools-extension'
 import { logger } from 'redux-logger'
+import { promiseMiddleware } from './middleware'
 
 import './index.css'
 import App from './components/App'
@@ -17,13 +18,16 @@ const defaultState = {
 const rootReducer = (state = defaultState, action) => {
   switch (action.type) {
     case 'HOME_PAGE_LOADED':
-      return { ...state, articles: action.payload }
+      return { ...state, articles: action.payload.articles }
     default:
       return state
   }
 }
 
-export const store = createStore(rootReducer, applyMiddleware(logger))
+export const store = createStore(
+  rootReducer,
+  applyMiddleware(promiseMiddleware, logger)
+)
 
 ReactDOM.render(
   <Provider store={store}>
