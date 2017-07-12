@@ -5,7 +5,7 @@ const ArticlePreView = props => {
   return (
     <div className='article-preview'>
       <div className='article-meta'>
-        <a><img src={article.author.image} /></a>
+        <a><img src={article.author.image} alt={article.title} /></a>
         <div className='info'>
           <a className='author'>{article.author.username}</a>
           <span className='date'>
